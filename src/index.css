@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: PP;
+    src: url(./assets/fonts/PP-Woodland.ttf);
+}
