@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ImageUpload from './ImageUpload'
 import ImagePreview from './ImagePreview'
 
 const Home = () => {
+
+  const [uploadImage, setuploadImage] = useState(null)
+  const [enhancedImage, setenhancedImage] = useState(null)
+  const [loading, setloading] = useState(false)
+
+  const uploadImageHandler = (file) => {
+    setuploadImage(URL.createObjectURL(file));
+    setloading(true);
+  }
+
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-full flex flex-col items-center justify-center">
@@ -16,8 +26,8 @@ const Home = () => {
           Upload your Image and let AI enhamce it in seconds.
         </p>
       </div>
-      <ImageUpload />
-      <ImagePreview />
+      <ImageUpload uploadImageHandler={uploadImageHandler} />
+      <ImagePreview loading={loading} uploaded={uploadImage} enhanced={enhancedImage} />
       <p className="text-lg opacity-60">Powered by @PicWish</p>
     </div>
   );
