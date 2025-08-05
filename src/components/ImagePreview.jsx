@@ -27,20 +27,22 @@ const ImagePreview = (props) => {
         <h1 className="text-lg text-black font-semibold py-2 text-center bg-blue-300">
           Enhanced Image
         </h1>
-        {props.enhanced && !props.loading && (
+        {props.loading ? (
+          <Loading />
+        ) : props.enhanced ? (
           <img
             src={props.enhanced}
-            alt=""
+            alt="Enhanced"
             className="w-60 h-60 lg:w-70 lg:h-70 object-cover"
           />
-        )}
-
-        {props.loading ? <Loading /> :(
-          <h1 className="w-60 h-60 lg:w-70 lg:h-70 object-cover text-black flex items-center justify-center">
+        ) : (
+          <h1
+            className="w-60 h-60 lg:w-70 lg:h-70 object-cover text-black flex
+        items-center justify-center"
+          >
             No Enhanced Image
           </h1>
         )}
-
       </div>
     </div>
   );

@@ -39,21 +39,25 @@ const fetchEnhancedImage = async (taskId) => {
             "X-API-KEY": API_KEY,
         }
    })
-    return data.data.image;
+    return data?.data;
 }
 
 const PollForEnhancedImage = async (taskId, retries = 0) => {
-    const result = await fetchEnhancedImage(taskId);
+  const result = await fetchEnhancedImage(taskId);
 
-    if (result.state === 4) {
-        if (retries >= MAXIMUM_RETRIES) {
-            throw new Error("Max retries reached. Please try again later.");
-        }
+  if (!result || typeof result.state === 'undefined') {
+    throw new Error("Invalid response: missing 'state' field.");
+  }
 
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+  if (result.state === 4) {
 
-        return PollForEnhancedImage(taskId, retries + 1);
+    if (retries >= MAXIMUM_RETRIES) {
+      throw new Error("Max retries reached. Please try again later.");
     }
 
-    return result;
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    return PollForEnhancedImage(taskId, retries + 1);
+  }
+
+  return result;
 };

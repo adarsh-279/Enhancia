@@ -14,7 +14,7 @@ const Home = () => {
     setloading(true);
     try {
       const enhancedURL = await enhanceImageAPI(file);
-      setenhancedImage(enhancedURL.image)
+      setenhancedImage(enhancedURL?.image || null);
       setloading(false)
     } catch (error) {
       console.log(error);
@@ -35,7 +35,11 @@ const Home = () => {
         </p>
       </div>
       <ImageUpload uploadImageHandler={uploadImageHandler} />
-      <ImagePreview loading={loading} uploaded={uploadImage} enhanced={enhancedImage?.image} />
+      <ImagePreview
+        loading={loading}
+        uploaded={uploadImage}
+        enhanced={enhancedImage}
+      />
       <p className="text-lg opacity-60 pt-5 lg:pt-0">Powered by @PicWish</p>
     </div>
   );
