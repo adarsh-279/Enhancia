@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ImageUpload from './ImageUpload'
 import ImagePreview from './ImagePreview'
+import { enhanceImageAPI } from '../utils/enhanceImageAPI'
 
 const Home = () => {
 
@@ -8,9 +9,16 @@ const Home = () => {
   const [enhancedImage, setenhancedImage] = useState(null)
   const [loading, setloading] = useState(false)
 
-  const uploadImageHandler = (file) => {
+  const uploadImageHandler = async (file) => {
     setuploadImage(URL.createObjectURL(file));
     setloading(true);
+    try {
+      const enhancedURL = await enhanceImageAPI(file);
+      setenhancedImage(enhancedURL.image)
+      setloading(false)
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -23,11 +31,11 @@ const Home = () => {
           AI Image Enhancer
         </h1>
         <p className="text-lg opacity-60">
-          Upload your Image and let AI enhamce it in seconds.
+          Upload your Image and let AI enhance it in seconds.
         </p>
       </div>
       <ImageUpload uploadImageHandler={uploadImageHandler} />
-      <ImagePreview loading={loading} uploaded={uploadImage} enhanced={enhancedImage} />
+      <ImagePreview loading={loading} uploaded={uploadImage} enhanced={enhancedImage?.image} />
       <p className="text-lg opacity-60">Powered by @PicWish</p>
     </div>
   );
