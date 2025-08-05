@@ -32,6 +32,14 @@ const uploadImage = async (file) => {
     return data.data.task_id;
 }
 
-const fetchEnhancedImage = async (taskId) => { }
+const fetchEnhancedImage = async (taskId) => {
+       const {data} = await axios.get(`${BaseURL}/api/tasks/visual/scale/${taskId}`, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+            "X-API-KEY": API_KEY,
+        }
+   })
+    return data.data.image;
+}
 
 //task_id: 5ce547af-d9b8-4a8c-9f41-da3e049c4291
