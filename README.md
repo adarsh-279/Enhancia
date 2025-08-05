@@ -1,12 +1,34 @@
-# React + Vite
+# 🖼 Enhancia – AI Image Enhancer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Enhancia* is a React-based single-page application that leverages AI to enhance image quality in one click using the [PicWish API](https://picwish.com/). Whether you're uploading a blurry portrait or a dull photograph, Enhancia brings it to life with clarity and detail — effortlessly.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔍 *AI-Powered Image Enhancement*
+- ⚛ Built with *React JS*
+- 📱 *Mobile and Desktop Responsive*
+- 🔄 Drag & Drop + Upload Support
+- ☁ Fast Cloud-Based Enhancement (via PicWish API)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🔧 Tech Stack
+
+-   **React JS:** Frontend framework for building the website's components and managing state.
+-   **Tailwind CSS:** Ensures styling of the website align with the design.
+-   **Vercel:** Deployment platform used to host the live demo of the project.
+- **API:** [PicWish AI API](https://picwish.com/)
+
+---
+
+## 🖼️ Website's Screenshot
+
+<img width="1920" height="1080" alt="Screenshot 2025-08-05 154052" src="https://github.com/user-attachments/assets/6bf8d812-d1e5-4196-abbd-a1ea80f2f69f" />
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests to help improve the project.
