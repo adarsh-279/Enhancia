@@ -36,7 +36,7 @@ const Home = () => {
       </div>
       <ImageUpload uploadImageHandler={uploadImageHandler} />
       <ImagePreview loading={loading} uploaded={uploadImage} enhanced={enhancedImage?.image} />
-      <p className="text-lg opacity-60">Powered by @PicWish</p>
+      <p className="text-lg opacity-60 pt-5 lg:pt-0">Powered by @PicWish</p>
     </div>
   );
 }

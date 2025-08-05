@@ -8,11 +8,8 @@ export const enhanceImageAPI = async (file) => {
 
  try {
     
-     const taskId = await uploadImage(file)
-     console.log("upload image",taskId);
-     
+     const taskId = await uploadImage(file)     
      const enhancedImage = await PollForEnhancedImage(taskId)
-     console.log('enhance image', enhancedImage);
      
      return enhancedImage;
      
@@ -49,8 +46,6 @@ const PollForEnhancedImage = async (taskId, retries = 0) => {
     const result = await fetchEnhancedImage(taskId);
 
     if (result.state === 4) {
-        console.log(`Processing...(${retries}/${MAXIMUM_RETRIES})`);
-
         if (retries >= MAXIMUM_RETRIES) {
             throw new Error("Max retries reached. Please try again later.");
         }
@@ -62,5 +57,3 @@ const PollForEnhancedImage = async (taskId, retries = 0) => {
 
     return result;
 };
-
-//task_id: 5ce547af-d9b8-4a8c-9f41-da3e049c4291
